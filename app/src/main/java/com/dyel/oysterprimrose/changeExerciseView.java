@@ -9,5 +9,9 @@ public class changeExerciseView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_exercise_view);
+
+        //oldExercise = EXTRA_MESSAGE
+
     }
+    // TODO: 10/14/16 display list of exercises with same major muscle group as oldExercise
 }
