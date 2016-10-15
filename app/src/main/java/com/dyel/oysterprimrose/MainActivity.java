@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new WorkoutListAdapter(mWorkoutList);
         WorkoutListAdapter mListAdapter = new WorkoutListAdapter(mWorkoutList);
         mRecyclerView.setAdapter(mListAdapter);
-
+        DatabaseHandler db = new DatabaseHandler(this);
+//        for (ExerciseObject obj:
+//             mWorkoutList) {
+//            db.deleteExercise(obj);
+//        }
         // TODO: 10/15/16 Connect DB to mWorkoutList
         addDemoData();
     }
@@ -39,18 +44,28 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // TODO: 10/15/16 This is where to update the List with new DB entries
         //throw away the list, refresh the list from the DB
+        DatabaseHandler db = new DatabaseHandler(this);
+        List<ExerciseObject> newWorkoutList = db.getAllExercises();
+        mWorkoutList.clear();
+        mWorkoutList.addAll(newWorkoutList);
+//        mWorkoutList = newWorkoutList;
+//        Toast.makeText(this, mWorkoutList.get(0).get_description(), Toast.LENGTH_SHORT).show();
+        mWorkoutList.clear();
         mAdapter.notifyDataSetChanged();
+        db.close();
 
 
     }
     
     
     private void addDemoData() {
-        ExerciseObject object = new ExerciseObject("Bench", "", "Lay on bench", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
+        DatabaseHandler db = new DatabaseHandler(this);
+        ExerciseObject object = new ExerciseObject("Bench", "image here", "Lay on bench", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
                 "Bar", "Pecs");
+        db.addExerciseObject(object);
 //        object.get_exercise();
 //        object.get_description();
-        mWorkoutList.add(object);
+//          mWorkoutList.add(object);
 //        ExerciseObject newObject = new ExerciseObject();
 //        newObject.set_exercise("Squats");
 //        newObject.set_description("Make sure you have put the barbell at a height where you can " +

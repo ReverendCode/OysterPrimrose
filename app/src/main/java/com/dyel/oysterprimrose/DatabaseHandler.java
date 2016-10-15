@@ -5,6 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Created by adamcarlton on 10/15/16.
@@ -35,8 +41,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_WORKOUT_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + EXERCISE + " EXERCISE KEY" + IMAGE + " TEXT,"
-                + DESCRIPTION + " TEXT" + COMMENTS + "TEXT" + EQUIPMENT + "TEXT" + MUSCLEGROUP + ")";
+                + EXERCISE + " EXERCISE KEY," + IMAGE + " TEXT,"
+                + DESCRIPTION + " TEXT," + COMMENTS + " TEXT," + EQUIPMENT + " TEXT," + MUSCLEGROUP + "TEXT" +")";
         db.execSQL(CREATE_WORKOUT_TABLE);
     }
 
@@ -51,14 +57,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void addExerciseObject(ExerciseObject exercise){
+//        Toast.makeText(, "fuck", Toast.LENGTH_SHORT).show();
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EXERCISE, exercise.get_exercise());
-        values.put(IMAGE, exercise.get_image());
+//        values.put(IMAGE, exercise.get_image());
         values.put(DESCRIPTION, exercise.get_description());
-        values.put(COMMENTS, exercise.get_comments());
-        values.put(EQUIPMENT, exercise.get_equipment());
-        values.put(MUSCLEGROUP, exercise.get_musclegroup());
+//        values.put(COMMENTS, exercise.get_comments());
+//        values.put(EQUIPMENT, exercise.get_equipment());
+//        values.put(MUSCLEGROUP, exercise.get_musclegroup());
 
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -76,6 +83,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 cursor.getString(3), cursor.getString(4), cursor.getString(5));
         return exercise;
     }
+
+    public List<ExerciseObject> getAllExercises(){
+        List<ExerciseObject> exerciseList = new ArrayList<ExerciseObject>();
+
+        String selectQuery = "SELECT * FROM " + TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                ExerciseObject exercise = new ExerciseObject();
+                exercise.set_exercise(cursor.getString(0));
+                exercise.set_image(cursor.getString(1));
+                exercise.set_description(cursor.getString(2));
+                exercise.set_comments(cursor.getString(3));
+                exercise.set_equipment(cursor.getString(4));
+                exercise.set_musclegroup(cursor.getString(5));
+                exerciseList.add(exercise);
+            } while(cursor.moveToNext());
+        }
+        return exerciseList;
+    }
+
     public int updateExercise(ExerciseObject exercise){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
