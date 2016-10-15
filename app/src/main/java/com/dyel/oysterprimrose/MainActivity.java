@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         WorkoutListAdapter mListAdapter = new WorkoutListAdapter(mWorkoutList);
         mRecyclerView.setAdapter(mListAdapter);
 
+        // TODO: 10/15/16 Connect DB to mWorkoutList
 
         addDemoData();
     }
@@ -44,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
                 "If you train with a high weight it is advisable to have a spotter that can help" +
                 " you up if you can't lift the weight on your own.\n");
         mWorkoutList.add(object);
+        ExerciseObject newObject = new ExerciseObject();
+        newObject.set_exercise("Squats");
+        newObject.set_description("Make sure you have put the barbell at a height where you can " +
+                "comfortably take it out and put it back in. Take it out and make yourself ready:\n" +
+                "\n" +
+                "The bar is somewhat lower than your shoulders\n" +
+                "The feet are quite apart and point out\n" +
+                "The head is in your neck and looks up\n" +
+                "The chest is out\n" +
+                "Go now slowly down, till your thighs are parallel with the floor, not lower. " +
+                "The knees point outwards, your butt, out. Make a small pause of 1 second and with" +
+                " as much energy as you can, push the weight up. Make a pause of 2 seconds and repeat.");
+        mWorkoutList.add(newObject);
 
         mAdapter.notifyDataSetChanged();
     }
