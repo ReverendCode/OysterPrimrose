@@ -2,6 +2,7 @@ package com.dyel.oysterprimrose;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -63,18 +64,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-//    public ExerciseObject getExercise(){
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.query(TABLE_NAME, new String[]{EXERCISE, IMAGE, DESCRIPTION, COMMENTS, EQUIPMENT, MUSCLEGROUP},
-//                EXERCISE + "=?", new String[]{String.valueOf(EXERCISE)}, null, null, null, null);
-//        if (cursor != null){
-//            cursor.moveToFirst();
-//        }
-//        ExerciseObject exercise = new ExerciseObject(cursor.getString(0), cursor.getString(1), cursor.getString(2),
-//                cursor.getString(3), cursor.getString(4), cursor.getString(5));
-//        return exercise;
-//    }
+    public ExerciseObject getExercise(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, new String[]{EXERCISE, IMAGE, DESCRIPTION, COMMENTS, EQUIPMENT, MUSCLEGROUP},
+                EXERCISE + "=?", new String[]{String.valueOf(EXERCISE)}, null, null, null, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        ExerciseObject exercise = new ExerciseObject(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                cursor.getString(3), cursor.getString(4), cursor.getString(5));
+        return exercise;
+    }
     public int updateExercise(ExerciseObject exercise){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
