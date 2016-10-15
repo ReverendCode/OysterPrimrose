@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 //        DatabaseHandler db = new DatabaseHandler(this);
 
         // TODO: 10/15/16 Connect DB to mWorkoutList
-        addDemoData();
     }
 
 
@@ -46,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
         List<ExerciseObject> newWorkoutList = db.getAllExercises();
 //        mWorkoutList.clear();
         for (ExerciseObject obj:
-                mWorkoutList) {
+                db.getAllExercises()) {
             db.deleteExercise(obj);
         }
         mWorkoutList.addAll(newWorkoutList);
+
 //        mWorkoutList = newWorkoutList;
 //        Toast.makeText(this, mWorkoutList.get(0).get_description(), Toast.LENGTH_SHORT).show();
 //        mWorkoutList.clear();
@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 //                mWorkoutList) {
 //            db.deleteExercise(obj);
 //        }
+        addDemoData();
+
         mAdapter.notifyDataSetChanged();
         db.close();
     }
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 //                " as much energy as you can, push the weight up. Make a pause of 2 seconds and repeat.");
         //mWorkoutList.add(object);
         db.close();
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
     }
 
     public void handleNewExercise(View view) {
