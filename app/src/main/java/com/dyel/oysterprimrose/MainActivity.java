@@ -29,11 +29,8 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new WorkoutListAdapter(mWorkoutList);
         WorkoutListAdapter mListAdapter = new WorkoutListAdapter(mWorkoutList);
         mRecyclerView.setAdapter(mListAdapter);
-        DatabaseHandler db = new DatabaseHandler(this);
-//        for (ExerciseObject obj:
-//             mWorkoutList) {
-//            db.deleteExercise(obj);
-//        }
+//        DatabaseHandler db = new DatabaseHandler(this);
+
         // TODO: 10/15/16 Connect DB to mWorkoutList
         addDemoData();
     }
@@ -42,15 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
+
         // TODO: 10/15/16 This is where to update the List with new DB entries
         //throw away the list, refresh the list from the DB
         DatabaseHandler db = new DatabaseHandler(this);
+
         List<ExerciseObject> newWorkoutList = db.getAllExercises();
-        mWorkoutList.clear();
+        //mWorkoutList.clear();
+        for (ExerciseObject obj:
+                mWorkoutList) {
+            db.deleteExercise(obj);
+        }
         mWorkoutList.addAll(newWorkoutList);
 //        mWorkoutList = newWorkoutList;
 //        Toast.makeText(this, mWorkoutList.get(0).get_description(), Toast.LENGTH_SHORT).show();
-        mWorkoutList.clear();
+//        mWorkoutList.clear();
+//        for (ExerciseObject obj:
+//                mWorkoutList) {
+//            db.deleteExercise(obj);
+//        }
         mAdapter.notifyDataSetChanged();
         db.close();
 
@@ -60,9 +67,16 @@ public class MainActivity extends AppCompatActivity {
     
     private void addDemoData() {
         DatabaseHandler db = new DatabaseHandler(this);
+
         ExerciseObject object = new ExerciseObject("Bench", "image here", "Lay on bench", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
                 "Bar", "Pecs");
         db.addExerciseObject(object);
+        ExerciseObject legobj = new ExerciseObject("Deadlift", "image here", "Arch Back", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
+                "Bar", "Pecs");
+        db.addExerciseObject(legobj);
+        ExerciseObject backobj = new ExerciseObject("Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
+                "Bar", "Pecs");
+        db.addExerciseObject(backobj);
 //        object.get_exercise();
 //        object.get_description();
 //          mWorkoutList.add(object);
@@ -79,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 //                "The knees point outwards, your butt, out. Make a small pause of 1 second and with" +
 //                " as much energy as you can, push the weight up. Make a pause of 2 seconds and repeat.");
         //mWorkoutList.add(object);
-
+        db.close();
         mAdapter.notifyDataSetChanged();
     }
 

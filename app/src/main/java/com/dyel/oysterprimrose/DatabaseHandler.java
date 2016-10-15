@@ -75,7 +75,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_NAME, new String[]{EXERCISE, IMAGE, DESCRIPTION, COMMENTS, EQUIPMENT, MUSCLEGROUP},
-                EXERCISE + "=?", new String[]{String.valueOf(EXERCISE)}, null, null, null, null);
+                EXERCISE + " = ?", new String[]{String.valueOf(EXERCISE)}, null, null, null, null);
         if (cursor != null){
             cursor.moveToFirst();
         }
@@ -117,12 +117,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EQUIPMENT, exercise.get_equipment());
         values.put(MUSCLEGROUP, exercise.get_musclegroup());
 
-        return db.update(TABLE_NAME, values, EXERCISE + "+=?", new String[]{String.valueOf(exercise.get_exercise())});
+        return db.update(TABLE_NAME, values, EXERCISE + " = ?", new String[]{String.valueOf(exercise.get_exercise())});
     }
 
     public void deleteExercise(ExerciseObject exercise){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, EXERCISE + "+?", new String[]{String.valueOf(exercise.get_exercise())});
+        db.delete(TABLE_NAME, EXERCISE + " = ?", new String[]{String.valueOf(exercise.get_exercise())});
         db.close();
     }
 }
