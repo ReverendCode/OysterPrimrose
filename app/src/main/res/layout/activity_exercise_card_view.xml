@@ -17,8 +17,14 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="Exercise Title"
-
             android:textSize="24sp" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
     </TableRow>
 
 </TableLayout>

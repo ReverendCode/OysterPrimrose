@@ -14,6 +14,8 @@ public class ExerciseObject {
     private String _equipment;
     private String _musclegroup;
 
+    public ExerciseObject(){}
+
     public ExerciseObject(String exercise, String image, String description, String comments, String equipment, String musclegroup){
         this._exercise = exercise;
         this._image = image;
