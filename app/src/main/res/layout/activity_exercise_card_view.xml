@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_exercise_card_view"
@@ -12,8 +12,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.dyel.oysterprimrose.ExerciseCardView">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Exercise Title"
 
-</LinearLayout>
+            android:textSize="24sp" />
+    </TableRow>
+
+</TableLayout>
