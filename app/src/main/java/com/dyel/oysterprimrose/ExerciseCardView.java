@@ -13,9 +13,12 @@ public class ExerciseCardView extends AppCompatActivity {
     }
     //TODO: Display API information to include the following:
     /*
-    * Title
-    * Images
-    * Description
-    * Hints
+    Data to be put into DB
+    Title
+    Image
+    Description
+    Comments (optional)
+    Equipment
+    Muscle Group
     * */
 }

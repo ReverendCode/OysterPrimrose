@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void handleNewExercise(View view) {
         Intent intent = new Intent(this, addExerciseView.class);
-//        LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         startActivity(intent);
     }
 }
