@@ -7,7 +7,6 @@ package com.dyel.oysterprimrose;
 
 public class ExerciseObject {
 
-    private String _workout;
     private String _exercise;
     private String _image;
     private String _description;
@@ -15,21 +14,13 @@ public class ExerciseObject {
     private String _equipment;
     private String _musclegroup;
 
-    public ExerciseObject(String workout, String exercise, String image, String description, String comments, String equipment, String musclegroup){
-        this._workout = workout;
+    public ExerciseObject(String exercise, String image, String description, String comments, String equipment, String musclegroup){
         this._exercise = exercise;
         this._image = image;
         this._description = description;
         this._comments = comments;
         this._equipment = equipment;
         this._musclegroup = musclegroup;
-    }
-    public String get_workout() {
-        return _workout;
-    }
-
-    public void set_workout(String _workout) {
-        this._workout = _workout;
     }
 
     public String get_exercise() {
