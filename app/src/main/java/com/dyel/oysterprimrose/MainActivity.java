@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHandler db = new DatabaseHandler(this);
 
         List<ExerciseObject> newWorkoutList = db.getAllExercises();
-        //mWorkoutList.clear();
+//        mWorkoutList.clear();
         for (ExerciseObject obj:
                 mWorkoutList) {
             db.deleteExercise(obj);
@@ -60,11 +59,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
         mAdapter.notifyDataSetChanged();
         db.close();
-
-
     }
-    
-    
+
     private void addDemoData() {
         DatabaseHandler db = new DatabaseHandler(this);
 

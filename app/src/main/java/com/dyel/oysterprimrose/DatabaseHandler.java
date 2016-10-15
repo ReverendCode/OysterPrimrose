@@ -5,12 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by adamcarlton on 10/15/16.
@@ -64,7 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //        values.put(IMAGE, exercise.get_image());
         values.put(DESCRIPTION, exercise.get_description());
 //        values.put(COMMENTS, exercise.get_comments());
-//        values.put(EQUIPMENT, exercise.get_equipment());
+        values.put(EQUIPMENT, exercise.get_equipment());
 //        values.put(MUSCLEGROUP, exercise.get_musclegroup());
 
         db.insert(TABLE_NAME, null, values);

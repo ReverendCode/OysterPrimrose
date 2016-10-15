@@ -22,7 +22,7 @@ android:layout_height="wrap_content">
     android:layout_height="match_parent">
 
 <TextView
-    android:id="@+id/titleTextView"
+    android:id="@+id/text_title"
     android:text="@string/titleText"
     android:layout_alignParentTop="true"
     android:layout_alignLeft="@+id/imageView"
@@ -40,11 +40,24 @@ android:layout_height="wrap_content">
         />
 
     <TextView
+        android:id="@+id/text_equipment_type"
+        android:text="@string/equip_type"
+        android:layout_alignBottom="@id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@id/imageView"
         android:text="@string/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
 </android.support.v7.widget.CardView>
 
