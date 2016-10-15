@@ -30,10 +30,21 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mListAdapter);
 
         // TODO: 10/15/16 Connect DB to mWorkoutList
-
         addDemoData();
     }
 
+
+
+    protected void onResume() {
+        super.onResume();
+        // TODO: 10/15/16 This is where to update the List with new DB entries
+        //throw away the list, refresh the list from the DB
+        mAdapter.notifyDataSetChanged();
+
+
+    }
+    
+    
     private void addDemoData() {
         ExerciseObject object = new ExerciseObject();
         object.set_exercise("Bench Press");
