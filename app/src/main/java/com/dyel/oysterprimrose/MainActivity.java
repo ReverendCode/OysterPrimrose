@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         ExerciseObject backobj = new ExerciseObject("Deadlift", "image here", "Arch Back", "Put on 3 plates. You got this. Arch that back and pull with all your might!",
                 "Bar");
         db.addExerciseObject(backobj);
-        ExerciseObject legobj = new ExerciseObject("Squat", "image here", "Dont Brace Core", "Whatever you do. Don't hit parallel or below. So bad for your knees. Don't do it. I mean it",
+        ExerciseObject legobj = new ExerciseObject("Squat", "image here", "Don't Brace Core", "Whatever you do. Don't hit parallel or below. So bad for your knees. Don't do it. I mean it",
                 "Bar");
         db.addExerciseObject(legobj);
         db.close();
