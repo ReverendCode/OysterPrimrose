@@ -47,13 +47,23 @@ public class addExerciseView extends AppCompatActivity {
         mRecyclerView.setAdapter(mListAdapter);
 
         Intent intent = getIntent();
+        handleIntent(intent);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Log.v("Query",query);
             getJSONAPI instanceR = new getJSONAPI();
             instanceR.execute(query);
             try {
-            JSONObject searchJSON = instanceR.get();
+                JSONObject searchJSON = instanceR.get();
 
                 JSONArray searchJSONArray = searchJSON.getJSONArray("suggestions");
                 Log.v("DataGrabCheck",searchJSONArray.getJSONObject(0).toString());
