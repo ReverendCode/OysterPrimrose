@@ -67,30 +67,14 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHandler db = new DatabaseHandler(this);
 
         ExerciseObject object = new ExerciseObject("Bench", "image here", "Lay on bench", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
-                "Bar", "Pecs");
+                "Bar");
         db.addExerciseObject(object);
         ExerciseObject legobj = new ExerciseObject("Deadlift", "image here", "Arch Back", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
-                "Bar", "Pecs");
+                "Bar");
         db.addExerciseObject(legobj);
         ExerciseObject backobj = new ExerciseObject("Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
-                "Bar", "Pecs");
+                "Bar");
         db.addExerciseObject(backobj);
-//        object.get_exercise();
-//        object.get_description();
-//          mWorkoutList.add(object);
-//        ExerciseObject newObject = new ExerciseObject();
-//        newObject.set_exercise("Squats");
-//        newObject.set_description("Make sure you have put the barbell at a height where you can " +
-//                "comfortably take it out and put it back in. Take it out and make yourself ready:\n" +
-//                "\n" +
-//                "The bar is somewhat lower than your shoulders\n" +
-//                "The feet are quite apart and point out\n" +
-//                "The head is in your neck and looks up\n" +
-//                "The chest is out\n" +
-//                "Go now slowly down, till your thighs are parallel with the floor, not lower. " +
-//                "The knees point outwards, your butt, out. Make a small pause of 1 second and with" +
-//                " as much energy as you can, push the weight up. Make a pause of 2 seconds and repeat.");
-        //mWorkoutList.add(object);
         db.close();
 //        mAdapter.notifyDataSetChanged();
     }

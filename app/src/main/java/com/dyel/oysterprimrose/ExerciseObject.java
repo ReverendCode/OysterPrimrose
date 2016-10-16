@@ -13,18 +13,34 @@ public class ExerciseObject {
     private String _comments;
     private String _equipment;
     private String _musclegroup;
+    private int  _exerciseID;
+    private int[] _muscleID;
+//    public ExerciseObject(String string, String cursorString, String s, String string1, String cursorString1){}
 
-    public ExerciseObject(){}
 
-    public ExerciseObject(String exercise, String image, String description, String comments, String equipment, String musclegroup){
+    public ExerciseObject(String exercise, String image, String description, String comments, String equipment){
         this._exercise = exercise;
         this._image = image;
         this._description = description;
         this._comments = comments;
         this._equipment = equipment;
-        this._musclegroup = musclegroup;
+//        this._musclegroup = musclegroup;
+    }
+    public int get_exerciseID() {
+        return _exerciseID;
     }
 
+    public void set_exerciseID(int _exerciseID) {
+        this._exerciseID = _exerciseID;
+    }
+
+    public int[] get_muscleID() {
+        return _muscleID;
+    }
+
+    public void set_muscleID(int[] _muscleID) {
+        this._muscleID = _muscleID;
+    }
     public String get_exercise() {
         return _exercise;
     }
@@ -64,14 +80,14 @@ public class ExerciseObject {
     public void set_equipment(String _equipment) {
         this._equipment = _equipment;
     }
-
-    public String get_musclegroup() {
-        return _musclegroup;
-    }
-
-    public void set_musclegroup(String _musclegroup) {
-        this._musclegroup = _musclegroup;
-    }
+//
+//    public String get_musclegroup() {
+//        return _musclegroup;
+//    }
+//
+//    public void set_musclegroup(String _musclegroup) {
+//        this._musclegroup = _musclegroup;
+//    }
 
 }
 
