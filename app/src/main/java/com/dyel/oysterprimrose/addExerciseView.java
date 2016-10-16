@@ -42,6 +42,10 @@ public class addExerciseView extends AppCompatActivity {
         mAdapter = new SearchListAdapter(mExerciseList);
         mRecyclerView.setAdapter(mAdapter);
 
+
+//        mAdapter.setOnItemClickListener();
+
+
         Intent intent = getIntent();
         handleIntent(intent);
         mAdapter.notifyDataSetChanged();
