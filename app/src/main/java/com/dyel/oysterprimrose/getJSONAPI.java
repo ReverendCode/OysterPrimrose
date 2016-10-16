@@ -16,16 +16,20 @@ import java.net.URL;
  * Created by secomd on 10/15/2016.
  */
 
-public class getJSONAPI extends AsyncTask<Void,JSONObject,JSONObject> {
+public class getJSONAPI extends AsyncTask<String,Void,JSONObject> {
 
     @Override
     protected void onPreExecute() {
 
     }
     @Override
-    protected JSONObject doInBackground(Void... params) {
+    protected JSONObject doInBackground(String... params) {
         try {
-            URL url = new URL("https://wger.de/api/v2/exercise/");
+            String query = params[0];
+            String root = "https://wger.de/api/v2/exercise/search/?term=";
+            root = root.concat(query);
+            Log.v("Query",root);
+            URL url = new URL(root);
             HttpURLConnection connection =
                     (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
@@ -54,7 +58,7 @@ public class getJSONAPI extends AsyncTask<Void,JSONObject,JSONObject> {
             Log.v("DataCheck",data.toString());
             return data;
         }catch(Exception e){
-            Log.v("Ok",e.toString());
+            Log.v("InBackground",e.toString());
             return null;
         }
 
