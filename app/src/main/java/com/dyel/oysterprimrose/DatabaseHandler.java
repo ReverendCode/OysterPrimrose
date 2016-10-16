@@ -28,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DESCRIPTION = "description";
     private static final String COMMENTS = "comments";
     private static final String EQUIPMENT = "equipment";
-    private static final String MUSCLEGROUP = "muscle group";
+    //private static final String MUSCLEGROUP = "muscle group";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,7 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_WORKOUT_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + EXERCISE + " EXERCISE KEY," + IMAGE + " TEXT,"
-                + DESCRIPTION + " TEXT," + COMMENTS + " TEXT," + EQUIPMENT + " TEXT," + MUSCLEGROUP + "TEXT" +")";
+                + DESCRIPTION + " TEXT," + COMMENTS + " TEXT," + EQUIPMENT + " TEXT" + ")";
         db.execSQL(CREATE_WORKOUT_TABLE);
     }
 
@@ -62,7 +62,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(DESCRIPTION, exercise.get_description());
 //        values.put(COMMENTS, exercise.get_comments());
         values.put(EQUIPMENT, exercise.get_equipment());
-//        values.put(MUSCLEGROUP, exercise.get_musclegroup());
 
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -71,13 +70,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public ExerciseObject getExercise(){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_NAME, new String[]{EXERCISE, IMAGE, DESCRIPTION, COMMENTS, EQUIPMENT, MUSCLEGROUP},
+        Cursor cursor = db.query(TABLE_NAME, new String[]{EXERCISE, IMAGE, DESCRIPTION, COMMENTS, EQUIPMENT},
                 EXERCISE + " = ?", new String[]{String.valueOf(EXERCISE)}, null, null, null, null);
         if (cursor != null){
             cursor.moveToFirst();
         }
-        ExerciseObject exercise = new ExerciseObject(cursor.getString(0), cursor.getString(1), cursor.getString(2),
-                cursor.getString(3), cursor.getString(4), cursor.getString(5));
+        ExerciseObject exercise = new ExerciseObject(
+                "Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU", "Bar");
         return exercise;
     }
 
@@ -91,13 +90,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-                ExerciseObject exercise = new ExerciseObject();
+                ExerciseObject exercise = new ExerciseObject("Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU", "Bar");
                 exercise.set_exercise(cursor.getString(0));
                 exercise.set_image(cursor.getString(1));
                 exercise.set_description(cursor.getString(2));
                 exercise.set_comments(cursor.getString(3));
                 exercise.set_equipment(cursor.getString(4));
-                exercise.set_musclegroup(cursor.getString(5));
                 exerciseList.add(exercise);
             } while(cursor.moveToNext());
         }
@@ -112,7 +110,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(DESCRIPTION, exercise.get_description());
         values.put(COMMENTS, exercise.get_comments());
         values.put(EQUIPMENT, exercise.get_equipment());
-        values.put(MUSCLEGROUP, exercise.get_musclegroup());
 
         return db.update(TABLE_NAME, values, EXERCISE + " = ?", new String[]{String.valueOf(exercise.get_exercise())});
     }

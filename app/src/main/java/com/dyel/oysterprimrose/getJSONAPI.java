@@ -38,7 +38,7 @@ public class getJSONAPI extends AsyncTask<String,Void,JSONObject> {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()));
             Log.v("Ok","What");
-            StringBuffer json = new StringBuffer(1024);
+            StringBuffer json = new StringBuffer(2048);
             String tmp="";
             while((tmp=reader.readLine())!=null)
                 json.append(tmp).append("\n");
