@@ -52,6 +52,7 @@ class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolde
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                //this is the location of the item you clicked
                 int foo = holder.getAdapterPosition();
                 Toast.makeText(v.getContext(), "Position: " + foo, Toast.LENGTH_SHORT).show();
             }
