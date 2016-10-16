@@ -80,9 +80,23 @@ public class addExerciseView extends AppCompatActivity {
     }
     private List<ExerciseObject> processSearchJson(JSONArray json) throws JSONException {
         List<ExerciseObject> results = new ArrayList<>();
+
+
+
         for (int i = 0; i < json.length(); i++) {
+
             JSONObject obj = json.getJSONObject(i);
+            String name = obj.getString("name");
+            String description = obj.getString("description");
+//            String comments = obj.getString("comments");
+            String comments = "[COMMENTS]";
+//            String equipment = obj.getString()
+            int equip = obj.getInt("equipment");
+            String equipment = getNewJsonRequest("equipment",equip);
+
             // TODO: 10/15/16 convert obj push and return
+            ExerciseObject temp = new ExerciseObject(name,"",description,comments,equipment);
+            results.add(temp);
         }
 
         return results;
