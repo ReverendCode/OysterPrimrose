@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,7 +20,7 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-
+        public ImageView image;
         public TextView title, description, equipType, comments;
         public ViewHolder(View v) {
             super(v);
@@ -27,6 +28,8 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
             description = (TextView) v.findViewById(R.id.descriptionTextView);
             equipType = (TextView) v.findViewById(R.id.text_equipment_type);
             comments = (TextView) v.findViewById(R.id.text_comment);
+            image = (ImageView) v.findViewById(R.id.imageView);
+
 
         }
     }
@@ -56,6 +59,7 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
         holder.description.setText(exerciseObjects.get(position).get_description());
         holder.equipType.setText("Equipment: " + exerciseObjects.get(position).get_equipment());
         holder.comments.setText(exerciseObjects.get(position).get_comments());
+
 
     }
 

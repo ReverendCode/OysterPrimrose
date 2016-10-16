@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: 10/15/16 Connect DB to mWorkoutList
     }
-
-
-
     protected void onResume() {
         super.onResume();
 
@@ -43,20 +40,13 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHandler db = new DatabaseHandler(this);
 
         List<ExerciseObject> newWorkoutList = db.getAllExercises();
-//        mWorkoutList.clear();
         for (ExerciseObject obj:
                 db.getAllExercises()) {
             db.deleteExercise(obj);
         }
         mWorkoutList.addAll(newWorkoutList);
 
-//        mWorkoutList = newWorkoutList;
-//        Toast.makeText(this, mWorkoutList.get(0).get_description(), Toast.LENGTH_SHORT).show();
-//        mWorkoutList.clear();
-//        for (ExerciseObject obj:
-//                mWorkoutList) {
-//            db.deleteExercise(obj);
-//        }
+
         addDemoData();
 
         mAdapter.notifyDataSetChanged();
