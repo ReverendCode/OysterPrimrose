@@ -79,7 +79,6 @@ public class addExerciseView extends AppCompatActivity {
             }
             catch(Exception e) {
 //                Log.v("Ok",e.toString());
-                //TODO:print that no result was given
             }
         }
     }
@@ -99,7 +98,6 @@ public class addExerciseView extends AppCompatActivity {
 //            int equip = obj.getInt("equipment");
 //            String equipment = getNewJsonRequest("equipment",equip);
 //            String equipment = "equipment";
-            // TODO: 10/15/16 convert obj push and return
             ExerciseObject temp = new ExerciseObject(name,"","","","");
             results.add(temp);
         }
@@ -109,6 +107,4 @@ public class addExerciseView extends AppCompatActivity {
 
         return results;
     }
-
-    //TODO: make an api call to find workouts with same name as the exercise entered into search bar
 }

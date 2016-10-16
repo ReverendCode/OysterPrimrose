@@ -1,16 +1,13 @@
 package com.dyel.oysterprimrose;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +47,6 @@ public class SearchFetch extends Activity {
                 mRecyclerView.setAdapter((RecyclerView.Adapter)searchJSONAdapter);
             }
             catch(JSONException e) {
-                //TODO:print that no result was given
             }
         }
     }

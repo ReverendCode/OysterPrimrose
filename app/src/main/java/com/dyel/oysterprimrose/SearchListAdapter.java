@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -52,9 +51,8 @@ class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolde
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //this is the location of the item you clicked
-                int foo = holder.getAdapterPosition();
-                Toast.makeText(v.getContext(), "Position: " + foo, Toast.LENGTH_SHORT).show();
+                // TODO: 10/15/16 get ExerciseObject located at position, push into DB
+                int position = holder.getAdapterPosition();
             }
         });
     }

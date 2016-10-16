@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void onResume() {
         super.onResume();
-
-        // TODO: 10/15/16 This is where to update the List with new DB entries
-        //throw away the list, refresh the list from the DB
         DatabaseHandler db = new DatabaseHandler(this);
 
         List<ExerciseObject> newWorkoutList = db.getAllExercises();
@@ -50,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         db.close();
     }
     public void handleAlternateExercise(View view) {
-        // TODO: 10/15/16 Make an API call to get alternate exercises here
+        // TODO: 10/15/16 Display 'changeExerciseView' with alternate exercises
     }
     
     private void addDemoData() {
