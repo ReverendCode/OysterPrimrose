@@ -26,6 +26,11 @@ public class ExerciseObject {
         this._equipment = equipment;
 //        this._musclegroup = musclegroup;
     }
+
+    public ExerciseObject() {
+
+    }
+
     public int get_exerciseID() {
         return _exerciseID;
     }

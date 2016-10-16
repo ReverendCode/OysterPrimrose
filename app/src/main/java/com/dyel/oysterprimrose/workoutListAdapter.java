@@ -82,7 +82,3 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
         }
     }
 }
-
-
-
-
