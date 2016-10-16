@@ -75,8 +75,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null){
             cursor.moveToFirst();
         }
-        ExerciseObject exercise = new ExerciseObject(
-                "Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU", "Bar");
+        ExerciseObject exercise = new ExerciseObject(cursor.getString(0), cursor.getString(1), cursor.getString(2),cursor.getString(3),
+        cursor.getString(4));
         return exercise;
     }
 
@@ -90,7 +90,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-                ExerciseObject exercise = new ExerciseObject("Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU", "Bar");
+                ExerciseObject exercise = new ExerciseObject();
                 exercise.set_exercise(cursor.getString(0));
                 exercise.set_image(cursor.getString(1));
                 exercise.set_description(cursor.getString(2));
