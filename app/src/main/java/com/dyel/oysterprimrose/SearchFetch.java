@@ -44,7 +44,7 @@ public class SearchFetch extends Activity {
             try {
                 JSONArray searchJSONArray = searchJSON.getJSONArray("Results");
                 JSONArrayAdapter searchJSONAdapter = new JSONArrayAdapter(this,searchJSONArray);
-                mRecyclerView.setAdapter((RecyclerView.Adapter)searchJSONAdapter);
+                mRecyclerView.setAdapter(searchJSONAdapter);
             }
             catch(JSONException e) {
             }
@@ -56,10 +56,6 @@ public class SearchFetch extends Activity {
             URL url = new URL("https://wger.de/api/v2/workout");
             HttpURLConnection connection =
                     (HttpURLConnection)url.openConnection();
-
-            //connection.addRequestProperty("x-api-key",
-                    //context.getString(R.string.open_weather_maps_app_id));
-
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()));
 

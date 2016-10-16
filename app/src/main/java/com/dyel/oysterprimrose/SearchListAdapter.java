@@ -13,9 +13,7 @@ import java.util.List;
  */
 class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolder>  {
     private List<ExerciseObject> exerciseObjects;
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
 
@@ -24,27 +22,20 @@ class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolde
             title = (TextView) v.findViewById(R.id.text_title_search);
         }
     }
-
-
-    // Provide a suitable constructor (depends on the kind of dataset)
     public SearchListAdapter(List<ExerciseObject> objects) {
         exerciseObjects = objects;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public SearchListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                            int viewType) {
-        // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.search_list_card, parent, false);
-        // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.title.setText(exerciseObjects.get(position).get_exercise());
@@ -57,17 +48,8 @@ class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolde
         });
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return exerciseObjects.size();
     }
-
-//    public void setOnItemClickListener(ClickListener clickListener) {
-//        SearchListAdapter.clickListener = clickListener;
-//    }
-//
-//    public interface ClickListener {
-//        void onItemClick(int position, View v);
-//    }
 }

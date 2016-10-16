@@ -57,15 +57,13 @@ public class addExerciseView extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-//            Log.v("Query",query);
             getJSONAPI instanceR = new getJSONAPI();
             instanceR.execute(query);
             try {
                 JSONObject searchJSON = instanceR.get();
 
                 JSONArray searchJSONArray = searchJSON.getJSONArray("suggestions");
-//                Log.v("DataGrabCheck",searchJSONArray.getJSONObject(0).toString());
-                JSONArrayAdapter searchJSONAdapter = new JSONArrayAdapter(this,searchJSONArray);
+//                JSONArrayAdapter searchJSONAdapter = new JSONArrayAdapter(this,searchJSONArray);
                 try {
                     List<ExerciseObject> tList = processSearchJson(searchJSONArray);
                     for (ExerciseObject obj :
@@ -78,12 +76,10 @@ public class addExerciseView extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
             }
             catch(Exception e) {
-//                Log.v("Ok",e.toString());
             }
         }
     }
     private List<ExerciseObject> processSearchJson(JSONArray json) throws JSONException {
-//        Toast.makeText(this, "Starting process", Toast.LENGTH_SHORT).show();
 
         List<ExerciseObject> results = new ArrayList<>();
         for (int i = 0; i < json.length(); i++) {
@@ -101,10 +97,6 @@ public class addExerciseView extends AppCompatActivity {
             ExerciseObject temp = new ExerciseObject(name,"","","","");
             results.add(temp);
         }
-//        ExerciseObject foo = new ExerciseObject("Title","image","description","comments","equipment");
-//        results.add(foo);
-//        Toast.makeText(this, "ending process", Toast.LENGTH_SHORT).show();
-
         return results;
     }
 }

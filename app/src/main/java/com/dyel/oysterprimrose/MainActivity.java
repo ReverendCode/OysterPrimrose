@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 "Bar");
         db.addExerciseObject(backobj);
         db.close();
-//        mAdapter.notifyDataSetChanged();
     }
 
     public void handleNewExercise(View view) {

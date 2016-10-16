@@ -1,10 +1,8 @@
 package com.dyel.oysterprimrose;
 
 import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -33,8 +31,6 @@ public class getJSONAPI extends AsyncTask<String,Void,JSONObject> {
             HttpURLConnection connection =
                     (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
-            //connection.addRequestProperty("x-api-key",
-            //context.getString(R.string.open_weather_maps_app_id));
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()));
             Log.v("Ok","What");
@@ -43,18 +39,7 @@ public class getJSONAPI extends AsyncTask<String,Void,JSONObject> {
             while((tmp=reader.readLine())!=null)
                 json.append(tmp).append("\n");
             reader.close();
-
             JSONObject data = new JSONObject(json.toString());
-
-            // This value will be 404 if the request was not
-            // successful
-            /*if(data.getInt("cod") != 200){
-                Log.v("Ok","Success");
-                return null;
-
-            }else {
-                Log.v("Ok","404ed");
-            }*/
             Log.v("DataCheck",data.toString());
             return data;
         }catch(Exception e){

@@ -5,15 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import static android.R.attr.resource;
 
 /**
  * Created by secomd on 10/15/2016.
@@ -72,46 +67,5 @@ public class JSONArrayAdapter extends RecyclerView.Adapter<JSONArrayAdapter.View
         }
 
     }
-/*
-    @Override
-    public JSONObject getItem(int position) {
-        try {
-            return data.getJSONObject(position);
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return true;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return data==null || data.length()==0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater =  (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View mainView = inflater.inflate(R.layout.listitems,null);
-        TextView textView1 = (TextView) mainView.findViewById(R.id.txt1);
-        TextView textView2 = (TextView) mainView.findViewById(R.id.txt2);
-        try {textView1.setText(data.getJSONObject(position).getString("name"));
-             textView2.setText(data.getJSONObject(position).getString("status"));}
-        catch(JSONException e) {
-            return null;
-        }
-        //return alertView;
-        return mainView;
-    }
-*/
 }
