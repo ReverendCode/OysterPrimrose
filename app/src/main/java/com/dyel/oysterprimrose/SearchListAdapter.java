@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by ReverendCode on 10/15/16.
  */
-class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHolder> {
+class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolder> {
     private List<ExerciseObject> exerciseObjects;
 
     // Provide a reference to the views for each data item
@@ -20,29 +20,26 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public TextView title, description, equipType, comments;
+        public TextView title;
         public ViewHolder(View v) {
             super(v);
-           title = (TextView) v.findViewById(R.id.text_title);
-            description = (TextView) v.findViewById(R.id.descriptionTextView);
-            equipType = (TextView) v.findViewById(R.id.text_equipment_type);
-            comments = (TextView) v.findViewById(R.id.text_comment);
+            title = (TextView) v.findViewById(R.id.text_title_search);
 
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public WorkoutListAdapter(List<ExerciseObject> objects) {
+    public SearchListAdapter(List<ExerciseObject> objects) {
         exerciseObjects = objects;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public WorkoutListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public SearchListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                            int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.exercise_card_layout, parent, false);
+                .inflate(R.layout.search_list_card, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(v);
@@ -53,10 +50,6 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(exerciseObjects.get(position).get_exercise());
-        holder.description.setText(exerciseObjects.get(position).get_description());
-        holder.equipType.setText("Equipment: " + exerciseObjects.get(position).get_equipment());
-        holder.comments.setText(exerciseObjects.get(position).get_comments());
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

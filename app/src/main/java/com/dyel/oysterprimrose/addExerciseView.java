@@ -3,8 +3,9 @@ package com.dyel.oysterprimrose;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,10 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class addExerciseView extends AppCompatActivity {
@@ -27,6 +26,7 @@ public class addExerciseView extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private List<ExerciseObject> mExerciseList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,10 @@ public class addExerciseView extends AppCompatActivity {
         LayoutInflater inflater =  (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View mainView = inflater.inflate(R.layout.activity_add_change_exercise,null);
         mRecyclerView = (RecyclerView) mainView.findViewById(R.id.addExerciseView);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        SearchListAdapter mListAdapter = new SearchListAdapter(mExerciseList);
+        mRecyclerView.setAdapter(mListAdapter);
 
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -54,7 +58,9 @@ public class addExerciseView extends AppCompatActivity {
                 JSONArray searchJSONArray = searchJSON.getJSONArray("suggestions");
                 Log.v("DataGrabCheck",searchJSONArray.getJSONObject(0).toString());
                 JSONArrayAdapter searchJSONAdapter = new JSONArrayAdapter(this,searchJSONArray);
-                mRecyclerView.setAdapter((RecyclerView.Adapter)searchJSONAdapter);
+                mExerciseList = processSearchJson(searchJSONArray);
+                // TODO: 10/15/16 process searchJSONArray into a List<ExerciseObject>, and hand it to mExerciseList
+                mRecyclerView.setAdapter(searchJSONAdapter);
             }
             catch(Exception e) {
                 Log.v("Ok",e.toString());
@@ -62,7 +68,15 @@ public class addExerciseView extends AppCompatActivity {
             }
         }
     }
+    private List<ExerciseObject> processSearchJson(JSONArray json) throws JSONException {
+        List<ExerciseObject> results = new ArrayList<>();
+        for (int i = 0; i < json.length(); i++) {
+            JSONObject obj = json.getJSONObject(i);
+            // TODO: 10/15/16 convert obj push and return
+        }
 
+        return results;
+    }
 
     //TODO: make an api call to find workouts with same name as the exercise entered into search bar
 }

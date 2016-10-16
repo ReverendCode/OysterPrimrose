@@ -60,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(EXERCISE, exercise.get_exercise());
 //        values.put(IMAGE, exercise.get_image());
         values.put(DESCRIPTION, exercise.get_description());
-//        values.put(COMMENTS, exercise.get_comments());
+        values.put(COMMENTS, exercise.get_comments());
         values.put(EQUIPMENT, exercise.get_equipment());
 
         db.insert(TABLE_NAME, null, values);
