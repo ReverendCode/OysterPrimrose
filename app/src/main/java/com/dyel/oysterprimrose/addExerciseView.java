@@ -41,11 +41,11 @@ public class addExerciseView extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new SearchListAdapter(mExerciseList);
         mRecyclerView.setAdapter(mAdapter);
-//        mExerciseList.add(foo);
-        mAdapter.notifyDataSetChanged();
 
         Intent intent = getIntent();
         handleIntent(intent);
+        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
