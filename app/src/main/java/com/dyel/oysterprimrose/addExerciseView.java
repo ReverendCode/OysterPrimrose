@@ -71,6 +71,7 @@ public class addExerciseView extends AppCompatActivity {
                 mExerciseList = processSearchJson(searchJSONArray);
                 // TODO: 10/15/16 process searchJSONArray into a List<ExerciseObject>, and hand it to mExerciseList
                 mRecyclerView.setAdapter(searchJSONAdapter);
+                mAdapter.notifyDataSetChanged();
             }
             catch(Exception e) {
                 Log.v("Ok",e.toString());
@@ -80,9 +81,6 @@ public class addExerciseView extends AppCompatActivity {
     }
     private List<ExerciseObject> processSearchJson(JSONArray json) throws JSONException {
         List<ExerciseObject> results = new ArrayList<>();
-
-
-
         for (int i = 0; i < json.length(); i++) {
 
             JSONObject obj = json.getJSONObject(i);
@@ -92,13 +90,14 @@ public class addExerciseView extends AppCompatActivity {
             String comments = "[COMMENTS]";
 //            String equipment = obj.getString()
             int equip = obj.getInt("equipment");
-            String equipment = getNewJsonRequest("equipment",equip);
-
+//            String equipment = getNewJsonRequest("equipment",equip);
+            String equipment = "equipment";
             // TODO: 10/15/16 convert obj push and return
-            ExerciseObject temp = new ExerciseObject(name,"",description,comments,equipment);
-            results.add(temp);
+//            ExerciseObject temp = new ExerciseObject(name,"",description,comments,equipment);
+//            results.add(temp);
         }
-
+        ExerciseObject foo = new ExerciseObject("Title","image","description","comments","equipment");
+        results.add(foo);
         return results;
     }
 
