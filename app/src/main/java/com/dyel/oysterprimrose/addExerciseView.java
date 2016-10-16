@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.SearchView;
 
 import org.json.JSONArray;
@@ -38,13 +36,13 @@ public class addExerciseView extends AppCompatActivity {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false);
 
-        LayoutInflater inflater =  (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View mainView = inflater.inflate(R.layout.activity_add_change_exercise,null);
-        mRecyclerView = (RecyclerView) mainView.findViewById(R.id.addExerciseView);
+        mRecyclerView = (RecyclerView) this.findViewById(R.id.addExerciseView);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        SearchListAdapter mListAdapter = new SearchListAdapter(mExerciseList);
-        mRecyclerView.setAdapter(mListAdapter);
+        mAdapter = new SearchListAdapter(mExerciseList);
+        mRecyclerView.setAdapter(mAdapter);
+//        mExerciseList.add(foo);
+        mAdapter.notifyDataSetChanged();
 
         Intent intent = getIntent();
         handleIntent(intent);
@@ -59,45 +57,56 @@ public class addExerciseView extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.v("Query",query);
+//            Log.v("Query",query);
             getJSONAPI instanceR = new getJSONAPI();
             instanceR.execute(query);
             try {
                 JSONObject searchJSON = instanceR.get();
 
                 JSONArray searchJSONArray = searchJSON.getJSONArray("suggestions");
-                Log.v("DataGrabCheck",searchJSONArray.getJSONObject(0).toString());
+//                Log.v("DataGrabCheck",searchJSONArray.getJSONObject(0).toString());
                 JSONArrayAdapter searchJSONAdapter = new JSONArrayAdapter(this,searchJSONArray);
-                mExerciseList = processSearchJson(searchJSONArray);
-                // TODO: 10/15/16 process searchJSONArray into a List<ExerciseObject>, and hand it to mExerciseList
-                mRecyclerView.setAdapter(searchJSONAdapter);
+                try {
+                    List<ExerciseObject> tList = processSearchJson(searchJSONArray);
+                    for (ExerciseObject obj :
+                            tList) {
+                        mExerciseList.add(obj);
+                    }
+                } catch (JSONException e){
+                    Log.e("Catch",e.toString());
+                }
                 mAdapter.notifyDataSetChanged();
             }
             catch(Exception e) {
-                Log.v("Ok",e.toString());
+//                Log.v("Ok",e.toString());
                 //TODO:print that no result was given
             }
         }
     }
     private List<ExerciseObject> processSearchJson(JSONArray json) throws JSONException {
+//        Toast.makeText(this, "Starting process", Toast.LENGTH_SHORT).show();
+
         List<ExerciseObject> results = new ArrayList<>();
         for (int i = 0; i < json.length(); i++) {
 
-            JSONObject obj = json.getJSONObject(i);
+            JSONObject obj = json.getJSONObject(i).getJSONObject("data");
             String name = obj.getString("name");
-            String description = obj.getString("description");
+
+//            String description = obj.getString("description");
 //            String comments = obj.getString("comments");
-            String comments = "[COMMENTS]";
-//            String equipment = obj.getString()
-            int equip = obj.getInt("equipment");
+//            String comments = "[COMMENTS]";
+//            String equipment = obj.getString();
+//            int equip = obj.getInt("equipment");
 //            String equipment = getNewJsonRequest("equipment",equip);
-            String equipment = "equipment";
+//            String equipment = "equipment";
             // TODO: 10/15/16 convert obj push and return
-//            ExerciseObject temp = new ExerciseObject(name,"",description,comments,equipment);
-//            results.add(temp);
+            ExerciseObject temp = new ExerciseObject(name,"","","","");
+            results.add(temp);
         }
-        ExerciseObject foo = new ExerciseObject("Title","image","description","comments","equipment");
-        results.add(foo);
+//        ExerciseObject foo = new ExerciseObject("Title","image","description","comments","equipment");
+//        results.add(foo);
+//        Toast.makeText(this, "ending process", Toast.LENGTH_SHORT).show();
+
         return results;
     }
 

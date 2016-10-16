@@ -25,12 +25,9 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.mWorkoutView);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new WorkoutListAdapter(mWorkoutList);
         WorkoutListAdapter mListAdapter = new WorkoutListAdapter(mWorkoutList);
+        mAdapter = new WorkoutListAdapter(mWorkoutList);
         mRecyclerView.setAdapter(mListAdapter);
-//        DatabaseHandler db = new DatabaseHandler(this);
-
-        // TODO: 10/15/16 Connect DB to mWorkoutList
     }
     protected void onResume() {
         super.onResume();

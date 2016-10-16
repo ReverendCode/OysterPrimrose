@@ -17,6 +17,7 @@ import java.util.List;
  */
 class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHolder> {
     private List<ExerciseObject> exerciseObjects;
+
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -82,7 +83,3 @@ class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.ViewHol
         }
     }
 }
-
-
-
-
