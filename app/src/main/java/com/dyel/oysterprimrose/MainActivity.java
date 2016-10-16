@@ -53,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
     private void addDemoData() {
         DatabaseHandler db = new DatabaseHandler(this);
 
-        ExerciseObject object = new ExerciseObject("Bench", "image here", "Lay on bench", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
+        ExerciseObject object = new ExerciseObject("Bench", "image here", "Lay on bench", "Do weight you clearly can't do and have somebody come save you",
                 "Bar");
         db.addExerciseObject(object);
-        ExerciseObject legobj = new ExerciseObject("Deadlift", "image here", "Arch Back", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
-                "Bar");
-        db.addExerciseObject(legobj);
-        ExerciseObject backobj = new ExerciseObject("Squat", "image here", "Dont Brace Core", "DO WEIGHT YOU CAN'T DO AND HAVE PARTNER ROW IT OFF YOU",
+        ExerciseObject backobj = new ExerciseObject("Deadlift", "image here", "Arch Back", "Put on 3 plates. You got this. Arch that back and pull with all your might!",
                 "Bar");
         db.addExerciseObject(backobj);
+        ExerciseObject legobj = new ExerciseObject("Squat", "image here", "Dont Brace Core", "Whatever you do. Don't hit parallel or below. So bad for your knees. Don't do it. I mean it",
+                "Bar");
+        db.addExerciseObject(legobj);
         db.close();
     }
 
