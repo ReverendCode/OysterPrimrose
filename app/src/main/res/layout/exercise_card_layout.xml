@@ -32,6 +32,14 @@ android:layout_height="wrap_content">
     android:textStyle="normal|bold"
     android:textAlignment="center" />
 
+    <Button
+        android:id="@+id/button_alternate"
+        android:text="@string/alternate"
+        android:layout_alignRight="@+id/text_title"
+        android:onClick="handleAlternateExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ImageView
         android:layout_width="100sp"
         android:id="@+id/imageView"

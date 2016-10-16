@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
         db.close();
     }
-
+    public void handleAlternateExercise(View view) {
+        // TODO: 10/15/16 Make an API call to get alternate exercises here
+    }
+    
     private void addDemoData() {
         DatabaseHandler db = new DatabaseHandler(this);
 
